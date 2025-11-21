@@ -14,7 +14,8 @@ name: Build
 jobs:
   build:
     name: Build contract
-    runs-on: runs-on=${{ github.run_id }}/family=c6a.8xlarge/image=ubuntu24-full-x64/extras=s3-cache
+    # runs-on`: runs-on=${{ github.run_id }}/family=c6a.8xlarge/image=ubuntu24-full-x64/extras=s3-cache
+    runs-on: ubuntu-latest
     container: rust:latest
     steps:
       - name: Setup Node.js
@@ -74,7 +75,8 @@ jobs:
 
   publish:
     name: Publish contracts
-    runs-on: runs-on=${{ github.run_id }}/family=c6a.large/image=ubuntu24-full-x64
+    # runs-on: runs-on=${{ github.run_id }}/family=c6a.large/image=ubuntu24-full-x64
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Download artifacts
